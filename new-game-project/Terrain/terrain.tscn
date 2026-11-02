@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dti2p4iv4g1fa"]
+
+[ext_resource type="Script" path="res://terrain/terrain_manager.gd" id="1_terrain"]
+
+[node name="Terrain" type="Node3D"]
+script = ExtResource("1_terrain")

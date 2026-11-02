@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl1yvxnrjqm4x"]
+
+[ext_resource type="Texture2D" uid="uid://4lh7e6e44dew" path="res://Assets/citrus_orchard_road_puresky_4k.exr" id="1_os535"]
+[ext_resource type="PackedScene" uid="uid://dti2p4iv4g1fa" path="res://Terrain/terrain.tscn" id="2_pluan"]
+[ext_resource type="PackedScene" uid="uid://ccxqpbd5inew0" path="res://player.tscn" id="5_t81lh"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xk64c"]
+panorama = ExtResource("1_os535")
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_nsrqi"]
+sky_material = SubResource("PanoramaSkyMaterial_xk64c")
+
+[sub_resource type="Environment" id="Environment_mvcry"]
+background_mode = 2
+sky = SubResource("Sky_nsrqi")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="Enviro" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviro"]
+environment = SubResource("Environment_mvcry")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviro"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Stage" type="Node3D" parent="."]
+
+[node name="Terrain" parent="." instance=ExtResource("2_pluan")]
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("5_t81lh")]
